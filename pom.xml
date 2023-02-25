@@ -1,11 +1,13 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>com.github.olasubomi4</groupId>
+  <groupId>io.github.olasubomi4</groupId>
   <artifactId>kafkaDemoLibrary</artifactId>
   <packaging>war</packaging>
-  <version>1.0-SNAPSHOT</version>
+  <version>1.1.0</version>
   <name>kafkaDemoLibrary</name>
+
+  <description>A demo for kafka</description>
   <url>https://github.com/olasubomi4/</url>
   <licenses>
     <license>
@@ -27,11 +29,13 @@
     <developer>
       <name>subomi</name>
       <email>olasubomiodekunle@gmail.com</email>
+      <organization>Sonatype</organization>
+      <organizationUrl>http://www.sonatype.com</organizationUrl>
     </developer>
   </developers>
   <scm>
     <connection>scm:git:git://github.com/olasubomi4/kafkaDemoLibrary.git</connection>
-    <developerConnection>scm:git:ssh://github.com:olasubomi4/kafkaDemoLibrary.git</developerConnection>
+    <developerConnection>scm:git:ssh://github.com/olasubomi4/kafkaDemoLibrary.git</developerConnection>
     <url>https://github.com/olasubomi4/kafkaDemoLibrary</url>
   </scm>
 
@@ -124,6 +128,13 @@
           <nexusUrl>https://s01.oss.sonatype.org/</nexusUrl>
           <autoReleaseAfterClose>true</autoReleaseAfterClose>
         </configuration>
+        <dependencies>
+          <dependency>
+            <groupId>com.thoughtworks.xstream</groupId>
+            <artifactId>xstream</artifactId>
+            <version>1.4.15</version> <!-- apparently this needs to be exactly this version -->
+          </dependency>
+        </dependencies>
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
