@@ -17,17 +17,25 @@ import java.util.UUID;
 import static com.subomi.kafkaDemo.utility.LoadKafkaProperties.producerProperties;
 
 public class Publisher {
-    public void publicEventToKafka(String request) throws IOException {
-        sampleRecord itemWithOwner = new ObjectMapper().readValue(request, sampleRecord.class);
+    public Response publicEventToKafka(String request) {
+
+        sampleRecord itemWithOwner = null;
+        try {
+            itemWithOwner = new ObjectMapper().readValue(request, sampleRecord.class);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
         ResponseData  responseData= new ResponseData();
         boolean response= publishEventToKafkaHelper(itemWithOwner);
         if(response==true)
         {
             responseData.setMessage("Event was published to Kafka");
+            return Response.status(Response.Status.OK).entity(responseData).build();
 
         }
         else{
             responseData.setMessage("Failed to published event to Kafka");
+            return Response.status(Response.Status.BAD_REQUEST).entity(responseData).build();
 
         }
     }
