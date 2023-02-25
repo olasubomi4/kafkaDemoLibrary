@@ -3,8 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>io.github.olasubomi4</groupId>
   <artifactId>kafkaDemoLibrary2</artifactId>
-  <packaging>war</packaging>
-  <version>1.2.5</version>
+  <version>1.2.6</version>
   <name>kafkaDemoLibrary2</name>
 
   <description>A demo for kafka</description>
