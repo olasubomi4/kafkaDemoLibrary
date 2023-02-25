@@ -2,13 +2,13 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>io.github.olasubomi4</groupId>
-  <artifactId>kafkaDemoLibrary</artifactId>
+  <artifactId>kafkaDemoLibrary2</artifactId>
   <packaging>war</packaging>
-  <version>1.1.0</version>
-  <name>kafkaDemoLibrary</name>
+  <version>1.2.4</version>
+  <name>kafkaDemoLibrary2</name>
 
   <description>A demo for kafka</description>
-  <url>https://github.com/olasubomi4/</url>
+  <url>https://github.com/olasubomi4/kafkaDemoLibrary</url>
   <licenses>
     <license>
       <name>MIT License</name>
@@ -27,7 +27,7 @@
   </distributionManagement>
   <developers>
     <developer>
-      <name>subomi</name>
+      <name>subomi6</name>
       <email>olasubomiodekunle@gmail.com</email>
       <organization>Sonatype</organization>
       <organizationUrl>http://www.sonatype.com</organizationUrl>
@@ -164,6 +164,17 @@
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-release-plugin</artifactId>
+        <version>2.5.3</version>
+        <configuration>
+          <autoVersionSubmodules>true</autoVersionSubmodules>
+          <useReleaseProfile>false</useReleaseProfile>
+          <releaseProfiles>release</releaseProfiles>
+          <goals>deploy</goals>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-gpg-plugin</artifactId>
         <version>1.5</version>
         <executions>
@@ -187,10 +198,10 @@
             <goals>
               <goal>sign</goal>
             </goals>
-            <configuration>
-              <keyname>0x6527BD2A</keyname>
-              <passphraseServerId>0x6527BD2A</passphraseServerId>
-            </configuration>
+<!--            <configuration>-->
+<!--              <keyname>0x6527BD2A</keyname>-->
+<!--              <passphraseServerId>0x6527BD2A</passphraseServerId>-->
+<!--            </configuration>-->
           </execution>
         </executions>
       </plugin>
