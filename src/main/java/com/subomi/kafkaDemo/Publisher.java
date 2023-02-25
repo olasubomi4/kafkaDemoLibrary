@@ -1,6 +1,7 @@
 package com.subomi.kafkaDemo;
 
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 import com.mycorp.mynamespace.sampleRecord;
 import com.subomi.kafkaDemo.model.ResponseData;
@@ -10,25 +11,24 @@ import org.apache.kafka.clients.producer.ProducerRecord;
 
 import javax.json.JsonString;
 import javax.ws.rs.core.Response;
+import java.io.IOException;
 import java.util.UUID;
 
 import static com.subomi.kafkaDemo.utility.LoadKafkaProperties.producerProperties;
 
 public class Publisher {
-    public Response publicEventToKafka(String request)
-    {
-        Gson gson = new Gson();
-        sampleRecord request2 = gson.fromJson(request, sampleRecord.class);
+    public void publicEventToKafka(String request) throws IOException {
+        sampleRecord itemWithOwner = new ObjectMapper().readValue(request, sampleRecord.class);
         ResponseData  responseData= new ResponseData();
-        boolean response= publishEventToKafkaHelper(request2);
+        boolean response= publishEventToKafkaHelper(itemWithOwner);
         if(response==true)
         {
             responseData.setMessage("Event was published to Kafka");
-            return Response.status(Response.Status.OK).entity(responseData).build();
+
         }
         else{
             responseData.setMessage("Failed to published event to Kafka");
-            return Response.status(Response.Status.BAD_REQUEST).entity(responseData).build();
+
         }
     }
     private boolean publishEventToKafkaHelper(sampleRecord request)  {
